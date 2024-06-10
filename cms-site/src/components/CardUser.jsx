@@ -1,7 +1,10 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import instance from "../axiosInstance";
+import { useEffect } from "react";
+import Swal from "sweetalert2";
 
 export default function CardUser({ mycoins, fetchDataMyCoins }) {
+  const navigate = useNavigate();
   const deleteHandler = async () => {
     try {
       const { data } = await instance.delete(`/usercoins/${mycoins.id}`, {
@@ -10,7 +13,14 @@ export default function CardUser({ mycoins, fetchDataMyCoins }) {
         },
       });
 
+      Swal.fire({
+        title: "Good job!",
+        text: "Success to delete data!",
+        icon: "success",
+      });
+
       fetchDataMyCoins();
+      navigate("/");
     } catch (error) {
       Swal.fire({
         icon: "error",
@@ -19,6 +29,7 @@ export default function CardUser({ mycoins, fetchDataMyCoins }) {
       });
     }
   };
+
   return (
     <div className="card" style={{ width: "18rem" }}>
       <img src={mycoins.Coin.logo} className="card-img-top" alt="..." />
@@ -29,7 +40,12 @@ export default function CardUser({ mycoins, fetchDataMyCoins }) {
           {mycoins.quantity} {mycoins.Coin.name}
         </p>
         <div className="d-flex justify-content-center ">
-          <Link className="btn btn-warning ">Update</Link>
+          <Link
+            to={`/update-my-coin/${mycoins.id}`}
+            className="btn btn-warning "
+          >
+            Update
+          </Link>
         </div>
         <div className="d-flex justify-content-center ">
           <Link onClick={deleteHandler} className="btn btn-danger">

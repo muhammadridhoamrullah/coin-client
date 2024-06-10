@@ -1,22 +1,32 @@
 import { Link, useNavigate, useParams } from "react-router-dom";
 import instance from "../axiosInstance";
 import Swal from "sweetalert2";
+import { useState } from "react";
 
 export default function Card({ coins }) {
   const navigate = useNavigate();
   const { coinId } = useParams();
+  const [addCoin, setAddCoin] = useState([]);
   // POST /usercoins/:coinId
 
   const addData = async () => {
     try {
-      const { data } = await instance.post(`/usercoins/${coinId}`, {
+      const { data } = await instance.post(`/usercoins/${coins.id}`, addCoin, {
         headers: {
           Authorization: `Bearer ${localStorage.access_token}`,
         },
       });
 
+      Swal.fire({
+        title: "Good job!",
+        text: "Success to add data!",
+        icon: "success",
+      });
+
+      setAddCoin(data);
       navigate("/my-coins");
     } catch (error) {
+      console.log(error);
       Swal.fire({
         icon: "error",
         title: "Oops...",

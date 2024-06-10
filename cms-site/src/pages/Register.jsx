@@ -43,62 +43,73 @@ export default function Register() {
     }
   };
   return (
-    <div className="d-flex justify-content-center align-items-center mt-5">
-      <form onSubmit={submitHandler}>
-        <div className="mb-3">
-          <label htmlFor="exampleInputfullName1" className="form-label">
-            Full Name
-          </label>
-          <input
-            type="text"
-            className="form-control"
-            id="exampleInputfullName1"
-            aria-describedby="fullNameHelp"
-            name="fullName"
-            value={regisForm.fullName}
-            onChange={changeHandler}
-          />
-        </div>
+    <div className="row justify-content-center align-items-center mt-5">
+      <div className="col d-flex justify-content-end ">
+        <img src={"https://account.asus.com/img/login_img02.png"} alt="" />
+      </div>
 
-        <div className="mb-3">
-          <label htmlFor="exampleInputEmail1" className="form-label">
-            Email address
-          </label>
-          <input
-            type="email"
-            className="form-control"
-            id="exampleInputEmail1"
-            aria-describedby="emailHelp"
-            name="email"
-            value={regisForm.email}
-            onChange={changeHandler}
-          />
-        </div>
-        <div className="mb-3">
-          <label htmlFor="exampleInputPassword1" className="form-label">
-            Password
-          </label>
-          <input
-            type="password"
-            className="form-control"
-            id="exampleInputPassword1"
-            name="password"
-            value={regisForm.password}
-            onChange={changeHandler}
-          />
-        </div>
+      <div className="col d-flex justify-content-start">
+        <div className="d-flex justify-content-center align-items-center mt-5">
+          <form onSubmit={submitHandler}>
+            <div className="mb-3">
+              <label htmlFor="exampleInputfullName1" className="form-label">
+                Full Name
+              </label>
+              <input
+                type="fullName"
+                className="form-control"
+                id="exampleInputfullName1"
+                aria-describedby="fullNameHelp"
+                name="fullName"
+                value={regisForm.fullName}
+                onChange={changeHandler}
+              />
+            </div>
 
-        <button type="submit" className="btn btn-primary">
-          Submit
-        </button>
+            <div className="mb-3">
+              <label htmlFor="exampleInputEmail1" className="form-label">
+                Email address
+              </label>
+              <input
+                type="email"
+                className="form-control"
+                id="exampleInputEmail1"
+                aria-describedby="emailHelp"
+                name="email"
+                value={regisForm.email}
+                onChange={changeHandler}
+              />
+            </div>
+            <div className="mb-3">
+              <label htmlFor="exampleInputPassword1" className="form-label">
+                Password
+              </label>
+              <input
+                type="password"
+                className="form-control"
+                id="exampleInputPassword1"
+                name="password"
+                value={regisForm.password}
+                onChange={changeHandler}
+              />
+            </div>
 
-        <p>
-          Do you have an account?{" "}
-          <Link style={{ color: "blue", textDecoration: "none" }} to={"/login"}>
-            Login
-          </Link>
-        </p>
-      </form>
+            <button type="submit" className="btn btn-primary">
+              Submit
+            </button>
+
+            <p>
+              Do you have an account?{" "}
+              <Link
+                style={{ color: "blue", textDecoration: "none" }}
+                to={"/login"}
+              >
+                Login
+              </Link>
+            </p>
+          </form>
+        </div>
+      </div>
     </div>
   );
 }

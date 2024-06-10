@@ -4,6 +4,7 @@ import Login from "./pages/Login";
 import Layout from "./components/Layout";
 import Coins from "./pages/Coins";
 import MyCoins from "./pages/MyCoins";
+import UpdateMyCoin from "./pages/UpdateMyCoin";
 
 function checkLogin() {
   if (!localStorage.access_token) {
@@ -40,10 +41,10 @@ const router = createBrowserRouter([
         path: "my-coins",
         element: <MyCoins />,
       },
-    //   {
-    //     path: "Add",
-    //     element: <Add />,
-    //   },
+      {
+        path: "/update-my-coin/:id",
+        element: <UpdateMyCoin />,
+      },
     ],
   },
 ]);
