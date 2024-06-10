@@ -30,7 +30,13 @@ export default function MyCoins() {
     <div className="container">
       <div className="row gap-3 justify-content-around">
         {mycoins.map((el) => {
-          return <CardUser key={el.id} mycoins={el} />;
+          return (
+            <CardUser
+              key={el.id}
+              mycoins={el}
+              fetchDataMyCoins={fetchDataMyCoins}
+            />
+          );
         })}
       </div>
     </div>

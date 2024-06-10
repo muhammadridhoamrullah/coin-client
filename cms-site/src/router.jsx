@@ -40,6 +40,10 @@ const router = createBrowserRouter([
         path: "my-coins",
         element: <MyCoins />,
       },
+    //   {
+    //     path: "Add",
+    //     element: <Add />,
+    //   },
     ],
   },
 ]);

@@ -2,9 +2,11 @@ import { useEffect, useState } from "react";
 import Swal from "sweetalert2";
 import instance from "../axiosInstance";
 import Card from "../components/Card";
+import { useParams } from "react-router-dom";
 
 export default function Coins() {
   const [coins, setCoins] = useState([]);
+  const { coinId } = useParams();
 
   async function fetchData() {
     try {
@@ -23,6 +25,8 @@ export default function Coins() {
       });
     }
   }
+
+  
 
   useEffect(() => {
     fetchData();
