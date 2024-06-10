@@ -1,6 +1,8 @@
 import { createBrowserRouter, redirect } from "react-router-dom";
 import Register from "./pages/Register";
 import Login from "./pages/Login";
+import Layout from "./components/Layout";
+import Coins from "./pages/Coins";
 
 function checkLogin() {
   if (!localStorage.access_token) {
@@ -26,8 +28,14 @@ const router = createBrowserRouter([
   },
   {
     path: "/",
-    element: <p>Hai</p>,
+    element: <Layout />,
     loader: checkLogin,
+    children: [
+      {
+        path: "/",
+        element: <Coins />,
+      },
+    ],
   },
 ]);
 
