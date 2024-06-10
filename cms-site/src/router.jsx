@@ -3,6 +3,7 @@ import Register from "./pages/Register";
 import Login from "./pages/Login";
 import Layout from "./components/Layout";
 import Coins from "./pages/Coins";
+import MyCoins from "./pages/MyCoins";
 
 function checkLogin() {
   if (!localStorage.access_token) {
@@ -32,8 +33,12 @@ const router = createBrowserRouter([
     loader: checkLogin,
     children: [
       {
-        path: "/",
+        path: "",
         element: <Coins />,
+      },
+      {
+        path: "my-coins",
+        element: <MyCoins />,
       },
     ],
   },
