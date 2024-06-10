@@ -29,8 +29,14 @@ export default function UpdateMyCoin() {
         },
       });
 
+      Swal.fire({
+        title: "Good job!",
+        text: "You success to update data coin!",
+        icon: "success",
+      });
+
       setEditCoin(data);
-      navigate("/");
+      navigate("/my-coins");
     } catch (error) {
       console.log(error);
     }
@@ -43,11 +49,11 @@ export default function UpdateMyCoin() {
           Authorization: `Bearer ${localStorage.access_token}`,
         },
       });
-      console.log(data, "ini data");
+      console.log(data, "ini data fetch");
 
       setEditCoin({
         ...editCoin,
-        quantity: fetchDetailData.quantity,
+        quantity: data.quantity,
       });
       console.log(editCoin, "<< edit");
     } catch (error) {
